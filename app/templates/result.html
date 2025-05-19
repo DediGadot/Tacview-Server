@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ACMI Results</title>
+  </head>
+  <body>
+    <h1>Statistics</h1>
+    <h2>Metadata</h2>
+    <ul>
+    {% for key, value in stats.metadata.items() %}
+      <li><strong>{{ key }}:</strong> {{ value }}</li>
+    {% endfor %}
+    </ul>
+    <h2>Per Pilot</h2>
+    <ul>
+    {% for pilot, events in stats.pilots.items() %}
+      <li><strong>{{ pilot }}</strong>
+        <ul>
+        {% for event, count in events.items() %}
+          <li>{{ event }}: {{ count }}</li>
+        {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+    </ul>
+    <h2>Per Formation</h2>
+    <ul>
+    {% for formation, events in stats.formations.items() %}
+      <li><strong>{{ formation }}</strong>
+        <ul>
+        {% for event, count in events.items() %}
+          <li>{{ event }}: {{ count }}</li>
+        {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+    </ul>
+    <a href="/">Upload another file</a>
+  </body>
+</html>
